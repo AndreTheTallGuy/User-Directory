@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Rows from "./Rows";
 import "./Table.css";
 import API from "../utils/API";
 
