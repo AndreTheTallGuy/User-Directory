@@ -16,11 +16,9 @@ class Table extends Component {
 
   handleSort = e => {
     e.preventDefault();
-
     var newTable = this.state.tableData.sort((a, b) => {
       return +(a.name.first > b.name.first) || -(a.name.first < b.name.first);
     });
-    console.log(newTable);
     this.setState({ tableData: newTable });
   };
 
