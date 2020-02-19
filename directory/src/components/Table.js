@@ -14,18 +14,39 @@ class Table extends Component {
       .catch(err => console.log(err));
   }
 
+  handleSort = e => {
+    e.preventDefault();
+
+    var newTable = this.state.tableData.sort((a, b) => {
+      return +(a.name.first > b.name.first) || -(a.name.first < b.name.first);
+    });
+    console.log(newTable);
+    this.setState({ tableData: newTable });
+  };
+
   render() {
     return (
       <table>
         <tr>
           <th>Photo</th>
-          <th>First Name</th>
+          <th onClick={this.handleSort} style={{ cursor: "pointer" }}>
+            First Name
+          </th>
           <th>Last Name</th>
           <th>Phone Number</th>
           <th>Email</th>
         </tr>
-        {console.log(this.state.tableData)}
-        <Rows tableData={this.state.tableData} />
+        {this.state.tableData.map(person => (
+          <tr>
+            <td>
+              <img src={person.picture.thumbnail} />
+            </td>
+            <td>{person.name.first}</td>
+            <td>{person.name.last}</td>
+            <td>{person.phone}</td>
+            <td>{person.email}</td>
+          </tr>
+        ))}
       </table>
     );
   }
