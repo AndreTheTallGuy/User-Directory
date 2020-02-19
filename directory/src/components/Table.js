@@ -21,6 +21,7 @@ class Table extends Component {
     });
     this.setState({ tableData: newTable });
   };
+
   render() {
     return (
       <table>
