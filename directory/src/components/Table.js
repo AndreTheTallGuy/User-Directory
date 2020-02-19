@@ -5,20 +5,14 @@ import API from "../utils/API";
 
 class Table extends Component {
   state = {
-    tableData: {
-      image: "",
-      firstName: "",
-      lastName: "",
-      phoneNumber: "",
-      dateOfBirth: ""
-    }
+    tableData: []
   };
 
-  renderPeople = () => {
+  componentDidMount() {
     API.getPeople()
-      .then(res => this.setState({ tableData: res.results }))
+      .then(res => this.setState({ tableData: res.data.results }))
       .catch(err => console.log(err));
-  };
+  }
 
   render() {
     return (
@@ -28,10 +22,10 @@ class Table extends Component {
           <th>First Name</th>
           <th>Last Name</th>
           <th>Phone Number</th>
-          <th>Date of Birth</th>
+          <th>Email</th>
         </tr>
-
-        <Rows image={this.state.image} firstName={this.state.firstName} />
+        {console.log(this.state.tableData)}
+        <Rows tableData={this.state.tableData} />
       </table>
     );
   }

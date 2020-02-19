@@ -1,14 +1,22 @@
 import React from "react";
 
 function Rows(props) {
+  console.log(props.tableData);
+
   return (
-    <tr>
-      <td>{props.image}</td>
-      <td>{props.firstName}</td>
-      <td>{props.lastName}</td>
-      <td>{props.phoneNumber}</td>
-      <td>{props.dob}</td>
-    </tr>
+    <div>
+      {props.tableData.map(person => (
+        <tr>
+          <td>
+            <img src="{person.picture.thumbnail}" />
+          </td>
+          <td>{person.name.first}</td>
+          <td>{person.name.last}</td>
+          <td>{person.phone}</td>
+          <td>{person.email}</td>
+        </tr>
+      ))}
+    </div>
   );
 }
 
